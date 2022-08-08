@@ -1,0 +1,59 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Ajout des CV{% endblock %}
+
+{% block body %}
+    <div class="row">
+    <div class='container col-md-20'>
+        <div class="card">
+            <div class="card-header">Liste des CV</div>
+            <div class="card">
+                <table class="table table-striped">
+                
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Age</th>
+                        <th>Adresse</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Specialite</th>
+                        <th>Diplome</th>
+                        <th>Experience</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                    </tr>
+                    
+                    {% for c in cvs %} 
+                        <tr>
+                            <td> {{ c.id }} </td>
+                            <td> {{ c.nom }} </td>
+                            <td> {{ c.prenom }} </td>
+                            <td> {{ c.age }} </td>
+                            <td> {{ c.adresse }} </td>
+                            <td> {{ c.email }} </td>
+                            <td> {{ c.telephone }} </td>
+                            <td> {{ c.specialite }} </td>
+                            <td> {{ c.diplome }} </td>
+                            <td> {{ c.experience }} </td>
+                            <td><a href="{{ path('cv_edit', { 'id': c.id }) }}"> Editer </a></td>
+                            <td><a href="{{ path('cv_delete', { 'id': c.id }) }}"> Supprimer </a></td>
+                        </tr>
+                   
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        </div>
+        <div class='container col-md-6'>
+         <div class="card">
+            <div class="card-header">Formulaire de gestion des CV</div>
+            <div class="card-body">
+                {{ form(form) }}
+            </div>
+        </div>
+        </div>
+    </div>
+
+{% endblock %}
